@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# this script will check local node veersion and compare it to latest release in github.
+# if they are differ, inform you in telegram.
+# to use this script in cron use absolute path and change $USER to your actual user name.
+
 SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 
 #localversion=$(solana help | grep solana-cli | sed 's/solana-cli //')
