@@ -7,7 +7,7 @@
 SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 
 #localversion=$(solana help | grep solana-cli | sed 's/solana-cli //')
-localversion=$(/home/$USER/.local/share/solana/install/active_release/bin/solana help | grep solana-cli | sed 's/solana-cli //')
+localversion=$($HOME/.local/share/solana/install/active_release/bin/solana help | grep solana-cli | sed 's/solana-cli //')
 gitversion=$(curl --silent "https://api.github.com/repos/solana-labs/solana/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")' | sed 's/v//')
 diff <(echo "$localversion") <(echo "$gitversion")
 
