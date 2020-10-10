@@ -4,7 +4,7 @@
 # if they are differ, inform you in telegram.
 # to use this script in cron use absolute path and change $USER to your actual user name.
 # cron example to check new release every hour:
-# "*/1 * * * * /home/$USER/scripts/new_version_check.sh >> /home/$USER/scripts/version_check.log"
+# "* */1 * * * /home/$USER/scripts/new_version_check.sh >> /home/$USER/scripts/version_check.log"
 # sendmsg_tgbot script must be in the same folder --> https://github.com/ama31337/solanatips/blob/main/scripts/sendmsg_tgbot.sh
 
 SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
