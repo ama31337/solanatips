@@ -7,11 +7,9 @@ diff <(echo "$localversion") <(echo "$gitversion")
 if [ $? -ne 0 ];
         then
                 echo "need to update, localversion is $localversion, new release is $gitversion"
-		echo "Which version you want to install?"
-		read ver
 		echo "start"
 
-		curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v${ver}/install/solana-install-init.sh | sh -s - v${ver}
+		curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v${gitversion}/install/solana-install-init.sh | sh -s - v${gitversion}
 		solana-install update
 		sudo systemctl stop solana-tds
 		sudo systemctl start solana-tds
@@ -24,4 +22,3 @@ if [ $? -ne 0 ];
 		echo "node is up to date"
 
 fi
-
