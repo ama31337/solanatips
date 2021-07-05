@@ -17,12 +17,12 @@ VALIDATOR_ADDR=`${APP_SOLANA_KEYGEN} pubkey ${KEYS_PATH}`
 
 SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 
-IS_DELINQUENT=`timeout ${TIMEOUT} ${APP_SOLANA} validators --output json | jq .delinquentValidators[].identityPubkey -r | grep ${VALIDATOR_ADDR}`
+IS_DELINQUENT=`timeout ${TIMEOUT} ${APP_SOLANA} validators --output json | jq -r ".validators[] | select(.identityPubkey==\"${VALIDATOR_ADDR}\") | .delinquent"`
 
-if [[ -z ${IS_DELINQUENT} ]]
+if [[ ${IS_DELINQUENT} == "true" ]]
 then
-    echo "`date` node is synced"
+    echo "`date` ALARM! node is delinquent"
+    "${SCRIPT_DIR}/../Send_msg_toTelBot.sh" "${HOSTNAME} inform you:" "ALARM! Solana validator ${VALIDATOR_ADDR} is delinquent"  2>&1 > /dev/null
 else
-    echo "`date` ALARM! node is out of sync"
-	 "${SCRIPT_DIR}/../Send_msg_toTelBot.sh" "${HOSTNAME} inform you:" "ALARM! Solana validator ${VALIDATOR_ADDR} is delinquent"  2>&1 > /dev/null
+    echo "`date` node is synced"
 fi
