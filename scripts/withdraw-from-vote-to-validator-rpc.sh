@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# input vars #
+# input vars
 VOTE_KEY_NAME="vote-account-keypair.json"
 VAL_KEY_NAME="validator-keypair.json"
 #amount num or ALL
@@ -22,7 +22,7 @@ VAL_PUBKEY=`${APP_SOLANA_KEYGEN} pubkey ${VAL_KEYS_PATH}`
 VOTE_BALANCE=${AMOUNT}
 
 
-$APP_SOLANA withdraw-from-vote-account ${VOTE_PUBKEY} ${VAL_PUBKEY} ${VOTE_BALANCE} --authorized-withdrawer ${VOTE_KEYS_PATH} --url http://127.0.0.1:8899
+$APP_SOLANA withdraw-from-vote-account ${VOTE_PUBKEY} ${VAL_PUBKEY} ${VOTE_BALANCE} --authorized-withdrawer ${VOTE_KEYS_PATH}
 
 #sleep 15
 
