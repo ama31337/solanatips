@@ -19,7 +19,7 @@ SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 
 IS_DELINQUENT=`timeout ${TIMEOUT} ${APP_SOLANA} validators --output json | jq -r ".validators[] | select(.identityPubkey==\"${VALIDATOR_ADDR}\") | .delinquent"`
 
-if [[ ${IS_DELINQUENT} == "true" ]]
+if [[ ${IS_DELINQUENT} == "true" ]]|| [[ ! -z ${IS_DELINQUENT} ]]
 then
     echo "`date` ALARM! node is delinquent"
     "${SCRIPT_DIR}/../Send_msg_toTelBot.sh" "${HOSTNAME} inform you:" "ALARM! Solana validator ${VALIDATOR_ADDR} is delinquent"  2>&1 > /dev/null
