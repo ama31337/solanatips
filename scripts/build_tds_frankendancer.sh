@@ -24,7 +24,7 @@ install_dependencies() {
     echo "Installing dependencies..."
     sudo apt-get update
     sudo apt-get install -y autoconf gettext automake autopoint flex bison gcc-multilib \
-        lcov libgmp-dev libclang-dev pkgconf
+        lcov libgmp-dev libclang-dev pkgconf protobuf-compiler llvm libudev-dev
 }
 
 # Function to install Rust if not installed
