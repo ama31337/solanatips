@@ -64,7 +64,8 @@ build_project() {
 # Function to install binaries
 install_binaries() {
     echo "Installing binaries..."
-    sudo cp "$REPO_DIR/build/native/gcc/bin/{fdctl,solana}" /usr/local/bin/
+    sudo cp "$REPO_DIR/build/native/gcc/bin/fdctl" /usr/local/bin/
+    sudo cp "$REPO_DIR/build/native/gcc/bin/solana" /usr/local/bin/
     echo "Installed binaries:"
     /usr/local/bin/fdctl --version
     /usr/local/bin/solana --version
